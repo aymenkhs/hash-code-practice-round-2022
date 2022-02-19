@@ -1,6 +1,7 @@
 import argparse
 
 import input
+from client import Client
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -21,13 +22,14 @@ def main():
 
     lines = content.split("\n")
 
+    clients = []
+
     for i in range(nb_custumers):
-        nb_ingredients_like, ingredients_like = input.line_content(lines[2*i])
-        nb_ingredients_dislike, ingredients_dislike = input.line_content(lines[2*i + 1])
+        nb_ingredients_likde, liked_ingredients = input.line_content(lines[2*i])
+        nb_ingredients_disliked, disliked_ingredients = input.line_content(lines[2*i + 1])
 
-        print('like', nb_ingredients_like, ingredients_like)
-        print('dislike', nb_ingredients_dislike, ingredients_dislike)
-
+        clients.append(Client(liked_ingredients, disliked_ingredients))
+    import pdb; pdb.set_trace()
 
 if __name__ == '__main__':
     main()
