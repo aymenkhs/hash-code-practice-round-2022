@@ -1,6 +1,7 @@
 import argparse
 
 import input
+import output
 from client import Client
 
 def parse_arguments():
@@ -29,6 +30,8 @@ def main():
         nb_ingredients_disliked, disliked_ingredients = input.line_content(lines[2*i + 1])
 
         clients.append(Client(liked_ingredients, disliked_ingredients))
+
+    output.write_file(args.file, {'basil', 'mushrooms', 'tomatoes'})
     import pdb; pdb.set_trace()
 
 if __name__ == '__main__':
