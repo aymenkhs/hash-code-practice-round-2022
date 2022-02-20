@@ -3,6 +3,7 @@ import argparse
 import input
 import output
 from client import Client
+from solution import solve
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
@@ -31,8 +32,9 @@ def main():
 
         clients.append(Client(liked_ingredients, disliked_ingredients))
 
-    output.write_file(args.file, {'basil', 'mushrooms', 'tomatoes'})
-    import pdb; pdb.set_trace()
+    pizza_ingredients = solve(clients)
+
+    output.write_file(args.file, pizza_ingredients)
 
 if __name__ == '__main__':
     main()
